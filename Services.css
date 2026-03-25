@@ -1,0 +1,237 @@
+/* =========================================
+   OUR SERVICES SECTION STYLES
+   ========================================= */
+
+.our-services-section {
+    padding: 50px 0;
+    background-color: #fff;
+    overflow: hidden; /* Prevents scrollbar during animation */
+}
+
+.services-flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/* --- Left Column: Image (Animated from Left) --- */
+.services-column-visual {
+    flex: 0 0 45%;
+    max-width: 45%;
+    text-align: center;
+    
+    /* Apply Slide From Left Animation */
+    animation: techSlideFromLeft 1s ease-out forwards;
+    opacity: 0; /* Hidden initially */
+}
+
+.services-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* --- Right Column: Content (Animated from Right) --- */
+.services-column-content {
+    flex: 0 0 50%;
+    max-width: 50%;
+    
+    /* Apply Slide From Right Animation */
+    animation: techSlideFromRight 1s ease-out forwards;
+    opacity: 0; /* Hidden initially */
+}
+
+.section-heading-left h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 20px;
+}
+
+.section-heading-left p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #777;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* --- Technologies & Progress Bars --- */
+.technologies-wrapper h5 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #03a4ed;
+    margin-bottom: 25px;
+}
+
+.progress-item {
+    margin-bottom: 20px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.progress-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin: 0;
+}
+
+.progress-info span {
+    font-size: 14px;
+    color: #03a4ed;
+    font-weight: 700;
+}
+
+/* The Track (Grey Background) */
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* The Fill (Blue Animated Bar) */
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(105deg, rgba(255, 77, 30, 1) 0%, rgba(255, 44, 109, 1) 100%);
+    border-radius: 10px;
+    width: 0;
+    /* Animation for the bar fill */
+    animation: loadBar 1.5s ease-out forwards;
+    animation-delay: 0.5s; /* Wait for section to slide in first */
+}
+
+/* Specific Widths for Animation */
+.fill-90 { --target-width: 35%; }
+.fill-85 { --target-width: 60%; }
+.fill-80 { --target-width: 45%; }
+.fill-75 { --target-width: 40%; }
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes techSlideFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes techSlideFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes loadBar {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* =========================================
+   RESPONSIVE LOGIC (Fixed for Tablet & iPad)
+   ========================================= */
+
+/* --- 1. iPad Pro & Small Laptops (992px to 1200px) --- */
+/* Keeps layout side-by-side but makes it fit smaller screens */
+@media (max-width: 1200px) {
+    .services-flex-wrapper {
+        gap: 30px; /* Reduce gap so columns don't break */
+        justify-content: center;
+    }
+
+    .section-heading-left h2 {
+        font-size: 28px; /* Slightly smaller heading */
+    }
+
+    .services-column-visual {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+    .services-column-content {
+        flex: 0 0 50%; /* Ensure text takes remaining space */
+        max-width: 50%;
+    }
+}
+
+/* --- 2. Tablet Portrait & Mobile (Under 991px) --- */
+/* Stacks the layout vertically */
+@media (max-width: 991px) {
+    .our-services-section {
+        padding: 40px 0; /* Reduce vertical padding */
+    }
+
+    .services-flex-wrapper {
+        flex-direction: column; /* Stack elements */
+        gap: 40px;
+    }
+
+    .services-column-visual,
+    .services-column-content {
+        flex: 0 0 100%;
+        max-width: 100%; /* Force full width */
+        text-align: center; /* Center everything */
+    }
+
+    .services-column-visual {
+        margin-bottom: 20px;
+    }
+
+    /* Make the image smaller on tablet so it doesn't take up whole screen */
+    .services-image-wrapper img {
+        max-width: 80%; 
+        margin: 0 auto; /* Center image */
+    }
+
+    /* Text Adjustments */
+    .section-heading-left h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .section-heading-left p {
+        text-align: center;
+        font-size: 14px;
+        padding: 0 10px; /* Add padding so text doesn't touch screen edges */
+    }
+
+    /* Center the progress bar titles */
+    .technologies-wrapper h5 {
+        text-align: center;
+    }
+
+    /* Ensure progress bars look good centered */
+    .progress-item {
+        max-width: 100%; /* Ensure bars take full width */
+    }
+}
+
+/* --- 3. Mobile Phones (Under 480px) --- */
+@media (max-width: 480px) {
+    .services-image-wrapper img {
+        max-width: 100%; /* Full width image on small phones */
+    }
+    
+    .section-heading-left h2 {
+        font-size: 24px;
+    }
+}

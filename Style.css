@@ -1,0 +1,247 @@
+/* --- Global Resets --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow-x: hidden; */
+}
+
+html,body{
+  font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: #fff;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+  /* font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: #fff;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
+    overflow-x:hidden ;
+
+}
+
+/* --- Root Layout --- */
+.header-main {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-height: 80px;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+/* --- Branding Column --- */
+.branding-area img {
+  height: 45px;
+  display: block;
+}
+
+/* --- Navigation Column (Aligned Right) --- */
+.navigation-area {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* This pushes the UL to the right side */
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+}
+
+.nav-items li {
+  margin-left: 35px;
+  /* Spacing between menu items */
+}
+
+.nav-items li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: #2a2a2a;
+  transition: color 0.3s ease;
+}
+
+/* Home Color Logic (Showing Red) */
+.nav-items li.home-link a {
+  color: #fe3f40 !important;
+}
+.nav-items li a.active,
+.nav-items li a:hover {
+  color: #fe3f40;
+}
+
+/* --- The Red Button & Click Logic --- */
+.red-solid-button {
+  background-color: #fe3f40;
+  color: #fff !important;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.red-solid-button:hover {
+  background-color: #03a4ed;
+  /* Turns Blue on hover */
+}
+
+/* Click color change to Blue */
+.red-solid-button:active {
+  background-color: #03a4ed !important;
+  transform: scale(0.95);
+  /* Press effect */
+}
+
+/* --- Mobile Logic (Hidden Checkbox) --- */
+.nav-checkbox {
+  display: none;
+}
+
+.mobile-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .mobile-menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mobile-menu-icon span {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+  }
+
+  .navigation-area {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    justify-content: center;
+    /* Center on mobile */
+  }
+
+  .nav-items {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .nav-items li {
+    margin: 15px 0;
+  }
+
+  /* Toggle Menu Logic */
+  .nav-checkbox:checked~.navigation-area {
+    max-height: 500px;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+
+
+/* =========================================
+   FOOTER STYLES
+   ========================================= */
+
+footer {
+    background-color: #ffffff; /* White background like the clone */
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center; /* Centers the text */
+}
+
+.footer-content p {
+    font-size: 12px; /* Exact size from your reference code */
+    color: #333333;  /* Dark grey text */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Optional: If you want it dark like many modern sites, uncomment below: */
+/* footer { background-color: #1a1a1a; border-top: none; }
+.footer-content p { color: #aaaaaa; } 
+*/
+
+
+
+
+/* =========================================
+   WHATSAPP FLOATING BUTTON STYLES
+   ========================================= */
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px; /* Distance from bottom */
+    right: 30px;  /* Distance from right */
+    background-color: #25d366; /* WhatsApp Green */
+    color: #FFF;
+    border-radius: 50%; /* Circle shape */
+    text-align: center;
+    font-size: 35px; /* Icon size */
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3); /* Shadow for depth */
+    z-index: 10000; /* Ensures it stays on top of everything */
+    
+    /* Flexbox to center the icon perfectly */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E; /* Darker green on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    color: #FFF;
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENT (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 28px;
+    }
+}

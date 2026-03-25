@@ -1,0 +1,219 @@
+/* =========================================
+   ACHIEVEMENTS SECTION
+   ========================================= */
+
+.achievements-section {
+    padding: 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* =======================
+   SECTION TITLE
+   ======================= */
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.section-title h2 span {
+    color: #ff2d2d;
+}
+
+/* =======================
+   SLIDER CONTAINER
+   ======================= */
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* =======================
+   SLIDER TRACK
+   ======================= */
+.slider-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: scrollSlider 20s linear infinite;
+    will-change: transform;
+}
+
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* Infinite animation */
+@keyframes scrollSlider {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =======================
+   CARD
+   ======================= */
+.flip-card-item {
+    flex: 0 0 340px;
+    width: 340px;
+    height: 300px;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.flip-card-item:hover {
+    transform: scale(1.03);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    transform-style: preserve-3d;
+    transition: transform 1.2s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* =======================
+   CARD FRONT / BACK
+   ======================= */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Flip states */
+.flip-card-front {
+    background: #03a4ed;
+    transform: rotateY(0);
+}
+
+.flip-card-back {
+    background: #03a4ed;
+    transform: rotateY(180deg);
+}
+
+.flip-card-item:hover .flip-card-front {
+    transform: rotateY(180deg);
+}
+
+.flip-card-item:hover .flip-card-back {
+    transform: rotateY(360deg);
+}
+
+/* =======================
+   CARD TEXT
+   ======================= */
+.flip-card-front h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin: 8px 0 4px;
+    text-align: center;
+}
+
+.flip-card-front p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 2px 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.role-text {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+.flip-card-back p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* =======================
+   IMAGE
+   ======================= */
+.img-circle {
+    width: 110px;
+    height: 110px;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.img-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE (VIDEO MATCH)
+   ========================================= */
+@media (max-width: 991px) {
+
+    /* Section title */
+    .section-title h2 {
+        font-size: 24px;
+    }
+
+    /* Create peek effect */
+    .slider-container {
+        padding-left: 12px;
+        touch-action: pan-x;
+    }
+
+    /* Slower animation on mobile */
+    .slider-track {
+        gap: 16px;
+        animation: scrollSlider 26s linear infinite;
+    }
+
+    /* Single centered card + peek */
+    .flip-card-item {
+        width: 85vw;
+        max-width: 85vw;
+        height: 280px;
+    }
+
+    /* Text scaling */
+    .flip-card-front h4 {
+        font-size: 18px;
+    }
+
+    .flip-card-front p,
+    .role-text,
+    .flip-card-back p {
+        font-size: 12px;
+    }
+}

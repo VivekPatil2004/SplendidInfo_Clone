@@ -1,0 +1,218 @@
+/* --- Home Section Main Wrapper --- */
+.home {
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Replaces col-md-12 with matched logic */
+.hero-container-full {
+  position: relative;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40vh; /* Increased to give more room */
+  padding: 0px 90px;
+  overflow: hidden;
+}
+
+/* Left Decoration (Matched from your CSS) */
+.hero-container-full::after {
+  content: '';
+  background-image: url('baner-dec-left.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 193px;
+  height: 467px;
+  z-index: 1;
+}
+
+/* Right Decoration (Matched from your CSS) */
+.hero-container-full::before {
+  content: "";
+  position: absolute;
+  background: url("baner-dec-right.png") no-repeat center;
+  background-size: contain;
+  right: -20px;
+  top: 0;
+  width: 193px;
+  height: 467px;
+  z-index: 1;
+}
+
+/* Custom Column Logic (Replaces col-md-6) */
+.hero-column-left, 
+.hero-column-right {
+  flex: 0 0 50%;
+  max-width: 50%;
+  position: relative;
+  z-index: 2; /* Ensures text is above decoration */
+}
+
+/* ================= LEFT CONTENT STYLE ================= */
+.left-container h3 {
+  color: #fe3f40; /* Red */
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.left-container h2 {
+  font-size: 50px;
+  margin: 20px 0px;
+  font-weight: 700;
+  color: #2a2a2a;
+  line-height: 72px;
+}
+
+.left-container span {
+  color: #fe3f40; /* Red emphasis */
+}
+
+.left-container em {
+  color: #03a4ed; /* Blue emphasis */
+  font-style: normal;
+}
+
+/* Hero Content */
+.hero-contact-form {
+  margin-top: 40px;
+  display: flex;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  background-color: #03a4ed;
+  max-width: 450px;
+}
+
+.hero-contact-form input {
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 0 20px;
+  flex: 1;
+  border-radius: 50px;
+  background-color: #03a4ed;
+}
+
+input::placeholder {
+  color: #fff;
+  opacity: 1; /* important for Firefox */
+}
+
+.hero-submit-btn {
+  background-color: #fff;
+  color: #fe3f40;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* ================= ANIMATIONS ================= */
+.animate-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  animation: slideLeft 1.2s ease-out forwards;
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-right {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(80px);
+  animation: slideRight 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes slideRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-right img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================= RESPONSIVE STYLES ================= */
+
+/* 1. Medium Screens (Tablets / Small Laptops) - NEW ADDITION */
+@media (max-width: 1200px) {
+  .hero-container-full {
+    padding: 0 60px;
+  }
+
+  .left-container h2 {
+    font-size: 42px;
+    padding-right: 30px;
+  }
+}
+
+/* 2. Mobile / Tablet Portrait */
+@media (max-width: 991px) {
+  
+  /* Stack the Main Columns */
+  .hero-container-full {
+    flex-direction: column;
+    padding: 40px 30px; /* Adjusted based on your request */
+    text-align: center;
+    min-height: auto;
+  }
+
+  .hero-column-left, 
+  .hero-column-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Typography Adjustments */
+  .left-container h2 {
+    font-size: 36px; /* Adjusted based on your request */
+    line-height: 42px;
+    padding-right: 0;
+  }
+
+  /* Animation & Ordering Logic (Added from request) */
+  .animate-left {
+    order: 1; /* Text comes first */
+  }
+
+  .animate-right {
+    margin-top: 40px;
+    order: 2; /* Image comes second */
+  }
+
+  /* CENTER THE CONTACT FORM */
+  .hero-contact-form {
+    margin: 30px auto 0 auto; 
+  }
+
+  /* Input Adjustments */
+  .left-container input,
+  .hero-contact-form input {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  /* Button Adjustments */
+  .left-container button,
+  .hero-submit-btn {
+    margin-left: 0;
+    display: inline-block; 
+    margin-top: 0px;
+  }
+}

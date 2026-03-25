@@ -1,0 +1,232 @@
+/* =========================================
+   CONTACT US SECTION STYLES
+   ========================================= */
+
+.contact-us-section {
+    padding: 100px 0;
+
+    /* BACKGROUND IMAGE CONFIGURATION */
+    background: url('/Images/contact-bg.png') no-repeat center center;
+
+    /* Ensures the image covers the entire section area */
+    background-size: cover;
+
+    color: #ffffff;
+    position: relative;
+    
+    /* ADDED: Prevents scrollbars when elements slide in */
+    overflow: hidden; 
+}
+
+.contact-flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* --- LEFT COLUMN: INFO (Slides from Left) --- */
+.contact-info-column {
+    flex: 0 0 45%;
+    max-width: 45%;
+    
+    /* ANIMATION ADDED */
+    opacity: 0; /* Initially hidden */
+    animation: contactSlideFromLeft 1s ease-out forwards;
+}
+
+.contact-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.contact-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.contact-content strong {
+    font-weight: 700;
+}
+
+.contact-content a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.social-links a {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.mt-4 {
+    margin-top: 25px;
+}
+
+.mt-5 {
+    margin-top: 40px;
+}
+
+/* We Offer List */
+.we-offer-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.we-offer-list ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* --- RIGHT COLUMN: FORM (Slides from Right) --- */
+.contact-form-column {
+    flex: 0 0 50%;
+    max-width: 50%;
+    
+    /* ANIMATION ADDED */
+    opacity: 0; /* Initially hidden */
+    animation: contactSlideFromRight 1s ease-out forwards;
+}
+
+/* The White Card Container */
+.form-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields (Light Blue Background) */
+.light-blue-input {
+    width: 100%;
+    /* Light Blue Color matching the image */
+    background-color: #dcfce7;
+    /* Fallback */
+    background-color: #d1f3fe;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+
+.light-blue-input::placeholder {
+    color: #666;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row input {
+    width: 50%;
+}
+
+textarea.light-blue-input {
+    resize: none;
+}
+
+/* Blue Submit Button */
+.blue-btn {
+    background-color: #03a4ed;
+    /* Bright Blue */
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.blue-btn:hover {
+    background-color: #0288c5;
+}
+
+/* =========================================
+   ANIMATIONS (Keyframes)
+   ========================================= */
+
+@keyframes contactSlideFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes contactSlideFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   RESPONSIVE LOGIC (Fixed: Text Center)
+   ========================================= */
+@media (max-width: 991px) {
+    
+    /* 1. Stack Columns */
+    .contact-flex-wrapper {
+        flex-direction: column;
+        align-items: center; /* Centers the columns themselves */
+    }
+
+    .contact-info-column,
+    .contact-form-column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* 2. Center Text in Info Column */
+    .contact-info-column {
+        text-align: center;
+        margin-bottom: 50px; /* Adds space between text and form */
+    }
+
+    /* Ensure Headings and Lists align center */
+    .contact-title,
+    .contact-content p,
+    .we-offer-list ul li {
+        text-align: center;
+    }
+
+    /* Center Social Links (assuming they are in a flex or block container) */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* 3. Form Adjustments */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row input {
+        width: 100%;
+    }
+    
+    /* Optional: Make the button full width on mobile */
+    .blue-btn {
+        width: 100%;
+    }
+}
